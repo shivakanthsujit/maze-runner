@@ -29,17 +29,13 @@ var ball = {
 var dispScore = document.getElementById("demo");
 var score = 0;
 var isOver = false;
-// User Variables - customize these to change the image being scrolled, its
-// direction, and the speed.
 
 img.src = 'images/back.jpg';
 var CanvasXSize = canvas.width;
 var CanvasYSize = canvas.height;
-var speed = 30; // lower is faster
-var scale = 1.05;
-var y = -4.5; // vertical offset
 
-// Main program
+var scale = 1.05;
+var y = -4.5; 
 
 var dx = 3;
 var imgW;
@@ -54,66 +50,63 @@ img.onload = function() {
     imgH = img.height * scale;
     
     if (imgW > CanvasXSize) {
-        // image larger than canvas
+        
         x = CanvasXSize - imgW;
     }
     if (imgW > CanvasXSize) {
-        // image width larger than canvas
+        
         clearX = imgW;
     } else {
         clearX = CanvasXSize;
     }
     if (imgH > CanvasYSize) {
-        // image height larger than canvas
+        
         clearY = imgH;
     } else {
         clearY = CanvasYSize;
     }
     
-    // get canvas context
+    
     ctx = document.getElementById('canvas').getContext('2d');
  
-    // set refresh rate
-    
     draw();
 }
 
-function draw() {
+function draw() 
+{
 
     var rr = document.getElementById("cl");
-    cl.textContent = rectAH + " " + rectBH + " " + dist + " " + rectAx + " " + rectBx;
-    ctx.clearRect(0, 0, clearX, clearY); // clear the canvas
     
-    // if image is <= Canvas Size
+    ctx.clearRect(0, 0, clearX, clearY); 
+    
+    
     if (imgW <= CanvasXSize) {
-        // reset, start from beginning
+       
         if (x > CanvasXSize) {
             x = -imgW + x;
         }
-        // draw additional image1
+        
         if (x > 0) {
             ctx.drawImage(img, -imgW + x, y, imgW, imgH);
         }
-        // draw additional image2
+        
         if (x - imgW > 0) {
             ctx.drawImage(img, -imgW * 2 + x, y, imgW, imgH);
         }
     }
 
-    // image is > Canvas Size
-    else {
-        // reset, start from beginning
+        else {
+        
         if (x > (CanvasXSize)) {
             x = CanvasXSize - imgW;
         }
-        // draw aditional image
+        
         if (x > (CanvasXSize-imgW)) {
             ctx.drawImage(img, x - imgW + 1, y, imgW, imgH);
         }
     }
-    // draw image
+    
     ctx.drawImage(img, x, y,imgW, imgH);
-    // amount to move
     x += dx;
 
     ctx.fillStyle = 'rgb(174, 214, 241)'; 
@@ -139,8 +132,8 @@ function draw() {
     rectBx += dx;
     ball.draw();
     score += dx;
-    dispScore.textContent = score;
-    dx += 0.001119;   
+    //dispScore.textContent = score;
+    dx += 0.001619;   
 
     raf = window.requestAnimationFrame(draw);
     checkCollision();
@@ -177,7 +170,8 @@ canvas.addEventListener('mouseout', function(e) {
   running = false;
 });
 
-function clear() {
+function clear() 
+{
   ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
 }
@@ -201,7 +195,7 @@ function checkCollision()
     ctx.closePath();
 
     var check = document.getElementById("coord");
-    check.textContent = t1 + " " + t2;
+    //check.textContent = t1 + " " + t2;
     if(t1 || t2)
     {
         window.cancelAnimationFrame(raf);
@@ -244,7 +238,8 @@ function resetScreen()
     draw();
 }
 
-function roundedRect(ctx, x, y, width, height, radius) {
+function roundedRect(ctx, x, y, width, height, radius) 
+{
   ctx.beginPath();
   ctx.moveTo(x, y + radius);
   ctx.lineTo(x, y + height - radius);
