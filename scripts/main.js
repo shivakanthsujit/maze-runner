@@ -213,7 +213,7 @@ function checkCollision()
         roundedRect(ctx,canvas.width / 2 - 50, canvas.height / 2 + 90, 100, 30 , 10);
         ctx.fillStyle = 'rgba(235, 245, 251, 1)';
         ctx.font = '18px serif';
-        ctx.fillText('Restart?', (canvas.width / 2) - 50 , canvas.height / 2 + 110);
+        ctx.fillText('Restart?', (canvas.width / 2) - 30 , canvas.height / 2 + 110);
 
     }
 }
